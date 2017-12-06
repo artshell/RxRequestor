@@ -1,0 +1,14 @@
+ext.versions = [
+        compatVersion   : '1.7',
+        okhttp          : '3.9.1',
+        okio            : '1.13.0',
+        retrofit        : '2.3.0',
+        rxjava          : '2.1.7',
+        stream          : '1.1.9',
+        gson            : '2.8.2',
+        errorprone      : '2.1.2',
+        errorprone_plugin   : '0.0.13',
+        apt_plugin          : '0.13',
+        uber_javax_extras   : '0.1.0',
+        findbugs_jsr305     : '3.0.2',
+]
