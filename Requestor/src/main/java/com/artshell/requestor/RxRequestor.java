@@ -1,3 +1,19 @@
+/*
+ * Copyright 2017 artshell. https://github.com/artshell
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.artshell.requestor;
 
 import com.annimon.stream.Stream;
@@ -10,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Flowable;
+import okhttp3.HttpUrl;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
@@ -37,10 +54,10 @@ public class RxRequestor {
 
     /**
      * @param target custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *               {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
-     * @param <T>
-     * @return
+     *               {@link java.io.InputStream}, {@link String}
+     * @param url    {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
+     * @param <T>    a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> get(Class<T> target, String url) {
         ClassExclude.exclude(target);
@@ -49,11 +66,11 @@ public class RxRequestor {
 
     /**
      * @param target  custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *                {@link java.io.InputStream}, {@link String}
+     * @param url     {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param headers refer to {@link HeaderMap}
-     * @param <T>
-     * @return
+     * @param <T>     a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> getWithHeaders(Class<T> target, String url, Map<String, String> headers) {
         Validates.check(target, headers);
@@ -62,11 +79,11 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *                   {@link java.io.InputStream}, {@link String}
+     * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
-     * @param <T>
-     * @return
+     * @param <T>        a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> getWithParameters(Class<T> target, String url, Map<String, String> queryPairs) {
         Validates.check(target, queryPairs);
@@ -75,12 +92,12 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *                   {@link java.io.InputStream}, {@link String}
+     * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param headers    refer to {@link HeaderMap}
-     * @param <T>
-     * @return
+     * @param <T>        a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> getWithEntirety(Class<T> target, String url, Map<String, String> queryPairs, Map<String, String> headers) {
         Validates.check(target, queryPairs, headers);
@@ -89,10 +106,10 @@ public class RxRequestor {
 
     /**
      * @param target custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *               {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
-     * @param <T>
-     * @return
+     *               {@link java.io.InputStream}, {@link String}
+     * @param url    {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
+     * @param <T>    a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> post(Class<T> target, String url) {
         ClassExclude.exclude(target);
@@ -101,11 +118,11 @@ public class RxRequestor {
 
     /**
      * @param target  custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *                {@link java.io.InputStream}, {@link String}
+     * @param url     {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param headers refer to {@link HeaderMap}
-     * @param <T>
-     * @return
+     * @param <T>     a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> postWithHeaders(Class<T> target, String url, Map<String, String> headers) {
         Validates.check(target, headers);
@@ -114,11 +131,11 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *                   {@link java.io.InputStream}, {@link String}
+     * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
-     * @param <T>
-     * @return
+     * @param <T>        a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> postWithParameters(Class<T> target, String url, Map<String, String> queryPairs) {
         Validates.check(target, queryPairs);
@@ -127,11 +144,11 @@ public class RxRequestor {
 
     /**
      * @param target custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *               {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *               {@link java.io.InputStream}, {@link String}
+     * @param url    {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param fields refer to {@link FieldMap}
-     * @param <T>
-     * @return
+     * @param <T>    a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> postFields(Class<T> target, String url, Map<String, String> fields) {
         Validates.check(target, fields);
@@ -140,12 +157,12 @@ public class RxRequestor {
 
     /**
      * @param target  custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *                {@link java.io.InputStream}, {@link String}
+     * @param url     {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param headers refer to {@link HeaderMap}
      * @param fields  refer to {@link FieldMap}
-     * @param <T>
-     * @return
+     * @param <T>     a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> postWithHeaders(Class<T> target, String url, Map<String, String> headers, Map<String, String> fields) {
         Validates.check(target, headers, fields);
@@ -154,12 +171,12 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *                   {@link java.io.InputStream}, {@link String}
+     * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param fields     refer to {@link FieldMap}
-     * @param <T>
-     * @return
+     * @param <T>        a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> postWithParameters(Class<T> target, String url, Map<String, String> queryPairs, Map<String, String> fields) {
         Validates.check(target, queryPairs, fields);
@@ -168,13 +185,13 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *                   {@link java.io.InputStream}, {@link String}
+     * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param headers    refer to {@link HeaderMap}
      * @param fields     refer to {@link FieldMap}
-     * @param <T>
-     * @return
+     * @param <T>        a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> postWithEntirety(Class<T> target, String url, Map<String, String> queryPairs, Map<String, String> headers, Map<String, String> fields) {
         Validates.check(target, queryPairs, headers, fields);
@@ -183,11 +200,11 @@ public class RxRequestor {
 
     /**
      * @param target custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *               {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *               {@link java.io.InputStream}, {@link String}
+     * @param url    {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param part   refer to {@link MultipartBody.Part}
-     * @param <T>
-     * @return
+     * @param <T>    a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> postPart(Class<T> target, String url, MultipartBody.Part part) {
         ClassExclude.exclude(target);
@@ -196,12 +213,12 @@ public class RxRequestor {
 
     /**
      * @param target  custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *                {@link java.io.InputStream}, {@link String}
+     * @param url     {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param headers refer to {@link HeaderMap}
      * @param part    refer to {@link MultipartBody.Part}
-     * @param <T>
-     * @return
+     * @param <T>     a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> postPartWithHeaders(Class<T> target, String url, Map<String, String> headers, MultipartBody.Part part) {
         Validates.check(target, headers);
@@ -210,12 +227,12 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *                   {@link java.io.InputStream}, {@link String}
+     * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param part       refer to {@link MultipartBody.Part}
-     * @param <T>
-     * @return
+     * @param <T>        a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> postPartWithParameters(Class<T> target, String url, Map<String, String> queryPairs, MultipartBody.Part part) {
         Validates.check(target, queryPairs);
@@ -224,13 +241,13 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *                   {@link java.io.InputStream}, {@link String}
+     * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param headers    refer to {@link HeaderMap}
      * @param part       refer to {@link MultipartBody.Part}
-     * @param <T>
-     * @return
+     * @param <T>        a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> postPartWithEntirety(Class<T> target, String url, Map<String, String> queryPairs, Map<String, String> headers, MultipartBody.Part part) {
         Validates.check(target, queryPairs, headers);
@@ -239,11 +256,11 @@ public class RxRequestor {
 
     /**
      * @param target custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *               {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *               {@link java.io.InputStream}, {@link String}
+     * @param url    {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param parts  refer to {@link MultipartBody.Part}
-     * @param <T>
-     * @return
+     * @param <T>    a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> postParts(Class<T> target, String url, MultipartBody.Part[] parts) {
         Validates.check(target, parts);
@@ -252,12 +269,12 @@ public class RxRequestor {
 
     /**
      * @param target  custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *                {@link java.io.InputStream}, {@link String}
+     * @param url     {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param headers refer to {@link HeaderMap}
      * @param parts   refer to {@link MultipartBody.Part}
-     * @param <T>
-     * @return
+     * @param <T>     a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> postPartsWithHeaders(Class<T> target, String url, Map<String, String> headers, MultipartBody.Part[] parts) {
         Validates.check(target, headers, parts);
@@ -266,12 +283,12 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *                   {@link java.io.InputStream}, {@link String}
+     * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param parts      refer to {@link MultipartBody.Part}
-     * @param <T>
-     * @return
+     * @param <T>        a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> postPartsWithParameters(Class<T> target, String url, Map<String, String> queryPairs, MultipartBody.Part[] parts) {
         Validates.check(target, queryPairs, parts);
@@ -280,13 +297,13 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *                   {@link java.io.InputStream}, {@link String}
+     * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param headers    refer to {@link HeaderMap}
      * @param parts      refer to {@link MultipartBody.Part}
-     * @param <T>
-     * @return
+     * @param <T>        a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> postPartsWithEntirety(Class<T> target, String url, Map<String, String> queryPairs, Map<String, String> headers, MultipartBody.Part[] parts) {
         Validates.check(target, queryPairs, headers, parts);
@@ -295,11 +312,11 @@ public class RxRequestor {
 
     /**
      * @param target custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *               {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *               {@link java.io.InputStream}, {@link String}
+     * @param url    {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param parts  refer to {@link MultipartBody.Part}
-     * @param <T>
-     * @return
+     * @param <T>    a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> postParts(Class<T> target, String url, List<MultipartBody.Part> parts) {
         Validates.check(target, parts);
@@ -308,12 +325,12 @@ public class RxRequestor {
 
     /**
      * @param target  custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *                {@link java.io.InputStream}, {@link String}
+     * @param url     {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param headers refer to {@link HeaderMap}
      * @param parts   refer to {@link MultipartBody.Part}
-     * @param <T>
-     * @return
+     * @param <T>     a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> postPartsWithHeaders(Class<T> target, String url, Map<String, String> headers, List<MultipartBody.Part> parts) {
         Validates.check(target, headers, parts);
@@ -322,12 +339,12 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *                   {@link java.io.InputStream}, {@link String}
+     * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param parts      refer to {@link MultipartBody.Part}
-     * @param <T>
-     * @return
+     * @param <T>        a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> postPartsWithParameters(Class<T> target, String url, Map<String, String> queryPairs, List<MultipartBody.Part> parts) {
         Validates.check(target, queryPairs, parts);
@@ -336,13 +353,13 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *                   {@link java.io.InputStream}, {@link String}
+     * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param headers    refer to {@link HeaderMap}
      * @param parts      refer to {@link MultipartBody.Part}
-     * @param <T>
-     * @return
+     * @param <T>        a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> postPartsWithEntirety(Class<T> target, String url, Map<String, String> queryPairs, Map<String, String> headers, List<MultipartBody.Part> parts) {
         Validates.check(target, queryPairs, headers, parts);
@@ -351,11 +368,11 @@ public class RxRequestor {
 
     /**
      * @param target custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *               {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *               {@link java.io.InputStream}, {@link String}
+     * @param url    {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param parts  refer to {@link MultipartBody.Part}
-     * @param <T>
-     * @return
+     * @param <T>    a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> postParts(Class<T> target, String url, Map<String, RequestBody> parts) {
         Validates.check(target, parts);
@@ -364,12 +381,12 @@ public class RxRequestor {
 
     /**
      * @param target  custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *                {@link java.io.InputStream}, {@link String}
+     * @param url     {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param headers refer to {@link HeaderMap}
      * @param parts   refer to {@link MultipartBody.Part}
-     * @param <T>
-     * @return
+     * @param <T>     a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> postPartsWithHeaders(Class<T> target, String url, Map<String, String> headers, Map<String, RequestBody> parts) {
         Validates.check(target, headers, parts);
@@ -378,12 +395,12 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *                   {@link java.io.InputStream}, {@link String}
+     * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param parts      refer to {@link MultipartBody.Part}
-     * @param <T>
-     * @return
+     * @param <T>        a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> postPartsWithParameters(Class<T> target, String url, Map<String, String> queryPairs, Map<String, RequestBody> parts) {
         Validates.check(target, queryPairs, parts);
@@ -392,13 +409,13 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *                   {@link java.io.InputStream}, {@link String}
+     * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param headers    refer to {@link HeaderMap}
      * @param parts      refer to {@link MultipartBody.Part}
-     * @param <T>
-     * @return
+     * @param <T>        a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> postPartsWithEntirety(Class<T> target, String url, Map<String, String> queryPairs, Map<String, String> headers, Map<String, RequestBody> parts) {
         Validates.check(target, queryPairs, headers, parts);
@@ -407,11 +424,11 @@ public class RxRequestor {
 
     /**
      * @param target custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *               {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *               {@link java.io.InputStream}, {@link String}
+     * @param url    {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param body   refer to {@link ResponseBody}
-     * @param <T>
-     * @return
+     * @param <T>    a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> postBody(Class<T> target, String url, RequestBody body) {
         ClassExclude.exclude(target);
@@ -420,12 +437,12 @@ public class RxRequestor {
 
     /**
      * @param target  custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *                {@link java.io.InputStream}, {@link String}
+     * @param url     {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param headers refer to {@link HeaderMap}
      * @param body    refer to {@link ResponseBody}
-     * @param <T>
-     * @return
+     * @param <T>     a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> postBodyWithHeaders(Class<T> target, String url, Map<String, String> headers, RequestBody body) {
         Validates.check(target, headers);
@@ -434,12 +451,12 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *                   {@link java.io.InputStream}, {@link String}
+     * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param body       refer to {@link ResponseBody}
-     * @param <T>
-     * @return
+     * @param <T>        a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> postBodyWithParameters(Class<T> target, String url, Map<String, String> queryPairs, RequestBody body) {
         Validates.check(target, queryPairs);
@@ -448,13 +465,13 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
-     * @param url
+     *                   {@link java.io.InputStream}, {@link String}
+     * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param headers    refer to {@link HeaderMap}
      * @param body       refer to {@link ResponseBody}
-     * @param <T>
-     * @return
+     * @param <T>        a class
+     * @return an instance of {@link Flowable}
      */
     public <T> Flowable<T> postBodyWithEntirety(Class<T> target, String url, Map<String, String> queryPairs, Map<String, String> headers, RequestBody body) {
         Validates.check(target, queryPairs, headers);
@@ -481,6 +498,10 @@ public class RxRequestor {
             this.mConverter = mProvider.getConverter();
         }
 
+        /**
+         * @param retrofit {@link Retrofit}
+         * @return an instance of {@link Builder}
+         */
         public Builder setRetrofit(Retrofit retrofit) {
             Objects.requireNonNull(retrofit, "retrofit == null");
             boolean hasFactory = Stream.of(retrofit.callAdapterFactories())
@@ -496,6 +517,10 @@ public class RxRequestor {
             return this;
         }
 
+        /**
+         * @param converter optional, refer to {@link DefaultConverter} if custom yourself ResultConverter
+         * @return an instance of {@link Builder}
+         */
         public Builder useSelfConverter(ResultConverter converter) {
             Objects.requireNonNull(converter, "converter == null");
             mConverter = converter;
@@ -503,6 +528,7 @@ public class RxRequestor {
         }
 
         public RxRequestor build() {
+            Objects.requireNonNull(mRetrofit, "retrofit == null, You must provider a retrofit by setRetrofit()");
             mDelegate = mRetrofit.create(ApiService.class);
             mConverter = mConverter == null ? new DefaultConverter() : mConverter;
             mProvider = new MapperProvider(mConverter);

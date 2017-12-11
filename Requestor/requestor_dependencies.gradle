@@ -12,3 +12,11 @@ ext.versions = [
         uber_javax_extras   : '0.1.0',
         findbugs_jsr305     : '3.0.2',
 ]
+
+ext.push = [
+        groupId           : 'com.artshell',
+        artifactId        : 'RxRequestor',
+        publishCode       : 100,
+        publishName       : '1.0.0',
+        url               : 'https://github.com/artshell/RxRequestor'
+]

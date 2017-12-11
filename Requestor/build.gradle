@@ -1,4 +1,5 @@
 apply plugin: 'java-library'
+apply plugin: 'com.novoda.bintray-release'
 apply plugin: 'net.ltgt.errorprone'
 apply plugin: 'net.ltgt.apt'
 
@@ -21,3 +22,20 @@ dependencies {
 
 sourceCompatibility = versions.compatVersion
 targetCompatibility = versions.compatVersion
+
+tasks.withType(Javadoc) {
+    options {
+        encoding "UTF-8"
+        charSet "UTF-8"
+        links "http://docs.oracle.com/javase/8/docs/api"
+    }
+}
+
+publish {
+    userOrg = 'artshell'
+    groupId = push.groupId
+    artifactId = push.artifactId
+    publishVersion = push.publishName
+    description = 'General http request encapsulate base Retrofit, OkHttp and RxJava'
+    website = push.url
+}

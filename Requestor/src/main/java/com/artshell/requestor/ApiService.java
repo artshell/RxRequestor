@@ -1,3 +1,19 @@
+/*
+ * Copyright 2017 artshell. https://github.com/artshell
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.artshell.requestor;
 
 import java.util.List;
@@ -26,135 +42,135 @@ import retrofit2.http.Url;
 public interface ApiService {
 
     /**
-     * @param url
-     * @return
+     * @param url an instance of {@link String}
+     * @return an instance of {@link Flowable}
      */
     @GET
     Flowable<ResponseBody> get(@Url String url);
 
     /**
-     * @param url
-     * @param headers
-     * @return
+     * @param url     an instance of {@link String}
+     * @param headers {@link Map}, defer to {@link HeaderMap}
+     * @return an instance of {@link Flowable}
      */
     @GET
     Flowable<ResponseBody> getWithHeaders(@Url String url, @HeaderMap Map<String, String> headers);
 
     /**
-     * @param url
-     * @param queryPairs
-     * @return
+     * @param url        an instance of {@link String}
+     * @param queryPairs {@link Map}, defer to {@link QueryMap}
+     * @return an instance of {@link Flowable}
      */
     @GET
     Flowable<ResponseBody> getWithParameters(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs);
 
     /**
-     * @param url
-     * @param headers
-     * @param queryPairs
-     * @return
+     * @param url        an instance of {@link String}
+     * @param headers    {@link Map}, defer to {@link HeaderMap}
+     * @param queryPairs {@link Map}, defer to {@link QueryMap}
+     * @return an instance of {@link Flowable}
      */
     @GET
     Flowable<ResponseBody> getWithEntirety(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs, @HeaderMap Map<String, String> headers);
 
     /**
-     * @param url
-     * @return
+     * @param url an instance of {@link String}
+     * @return an instance of {@link Flowable}
      */
     @POST
     Flowable<ResponseBody> post(@Url String url);
 
     /**
-     * @param url
-     * @param headers
-     * @return
+     * @param url     an instance of {@link String}
+     * @param headers {@link Map}, defer to {@link HeaderMap}
+     * @return an instance of {@link Flowable}
      */
     @POST
     Flowable<ResponseBody> postWithHeaders(@Url String url, @HeaderMap Map<String, String> headers);
 
     /**
-     * @param url
-     * @param queryPairs
-     * @return
+     * @param url        an instance of {@link String}
+     * @param queryPairs {@link Map}, defer to {@link QueryMap}
+     * @return an instance of {@link Flowable}
      */
     @POST
     Flowable<ResponseBody> postWithParameters(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs);
 
     /**
-     * @param url
-     * @param fields
-     * @return
+     * @param url    an instance of {@link String}
+     * @param fields {@link Map}, defer to {@link FieldMap}
+     * @return an instance of {@link Flowable}
      */
     @FormUrlEncoded
     @POST
     Flowable<ResponseBody> postFields(@Url String url, @FieldMap(encoded = true) Map<String, String> fields);
 
     /**
-     * @param url
-     * @param headers
-     * @param fields
-     * @return
+     * @param url     an instance of {@link String}
+     * @param headers {@link Map}, defer to {@link HeaderMap}
+     * @param fields  {@link Map}, defer to {@link FieldMap}
+     * @return an instance of {@link Flowable}
      */
     @FormUrlEncoded
     @POST
     Flowable<ResponseBody> postWithHeaders(@Url String url, @HeaderMap Map<String, String> headers, @FieldMap(encoded = true) Map<String, String> fields);
 
     /**
-     * @param url
-     * @param queryPairs
-     * @param fields
-     * @return
+     * @param url        an instance of {@link String}
+     * @param queryPairs {@link Map}, defer to {@link QueryMap}
+     * @param fields     {@link Map}, defer to {@link FieldMap}
+     * @return an instance of {@link Flowable}
      */
     @FormUrlEncoded
     @POST
     Flowable<ResponseBody> postWithParameters(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs, @FieldMap(encoded = true) Map<String, String> fields);
 
     /**
-     * @param url
-     * @param queryPairs
-     * @param headers
-     * @param fields
-     * @return
+     * @param url        an instance of {@link String}
+     * @param queryPairs {@link Map}, defer to {@link QueryMap}
+     * @param headers    {@link Map}, defer to {@link HeaderMap}
+     * @param fields     {@link Map}, defer to {@link FieldMap}
+     * @return an instance of {@link Flowable}
      */
     @FormUrlEncoded
     @POST
     Flowable<ResponseBody> postWithEntirety(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs, @HeaderMap Map<String, String> headers, @FieldMap(encoded = true) Map<String, String> fields);
 
     /**
-     * @param url
-     * @param part
-     * @return
+     * @param url  an instance of {@link String}
+     * @param part an instance of {@link MultipartBody.Part}, defer to {@link Part}
+     * @return an instance of {@link Flowable}
      */
     @Multipart
     @POST
     Flowable<ResponseBody> postPart(@Url String url, @Part MultipartBody.Part part);
 
     /**
-     * @param url
-     * @param headers
-     * @param part
-     * @return
+     * @param url     an instance of {@link String}
+     * @param headers {@link Map}, defer to {@link HeaderMap}
+     * @param part    an instance of {@link MultipartBody.Part}, defer to {@link Part}
+     * @return an instance of {@link Flowable}
      */
     @Multipart
     @POST
     Flowable<ResponseBody> postPartWithHeaders(@Url String url, @HeaderMap Map<String, String> headers, @Part MultipartBody.Part part);
 
     /**
-     * @param url
-     * @param queryPairs
-     * @param part
-     * @return
+     * @param url        an instance of {@link String}
+     * @param queryPairs {@link Map}, defer to {@link QueryMap}
+     * @param part       an instance of {@link MultipartBody.Part}, defer to {@link Part}
+     * @return an instance of {@link Flowable}
      */
     @Multipart
     @POST
     Flowable<ResponseBody> postPartWithParameters(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs, @Part MultipartBody.Part part);
 
     /**
-     * @param url
-     * @param queryPairs
-     * @param headers
-     * @param part
-     * @return
+     * @param url        an instance of {@link String}
+     * @param queryPairs {@link Map}, defer to {@link QueryMap}
+     * @param headers    {@link Map}, defer to {@link HeaderMap}
+     * @param part       an instance of {@link MultipartBody.Part}, defer to {@link Part}
+     * @return an instance of {@link Flowable}
      */
     @Multipart
     @POST
@@ -162,157 +178,157 @@ public interface ApiService {
 
 
     /**
-     * @param url
-     * @param parts
-     * @return
+     * @param url   an instance of {@link String}
+     * @param parts an array instance of {@link MultipartBody.Part}, defer to {@link Part}
+     * @return an instance of {@link Flowable}
      */
     @Multipart
     @POST
     Flowable<ResponseBody> postParts(@Url String url, @Part MultipartBody.Part[] parts);
 
     /**
-     * @param url
-     * @param headers
-     * @param parts
-     * @return
+     * @param url     an instance of {@link String}
+     * @param headers {@link Map}, defer to {@link HeaderMap}
+     * @param parts   an array instance of {@link MultipartBody.Part}, defer to {@link Part}
+     * @return an instance of {@link Flowable}
      */
     @Multipart
     @POST
     Flowable<ResponseBody> postPartsWithHeaders(@Url String url, @HeaderMap Map<String, String> headers, @Part MultipartBody.Part[] parts);
 
     /**
-     * @param url
-     * @param queryPairs
-     * @param parts
-     * @return
+     * @param url        an instance of {@link String}
+     * @param queryPairs {@link Map}, defer to {@link QueryMap}
+     * @param parts      an array instance of {@link MultipartBody.Part}, defer to {@link Part}
+     * @return an instance of {@link Flowable}
      */
     @Multipart
     @POST
     Flowable<ResponseBody> postPartsWithParameters(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs, @Part MultipartBody.Part[] parts);
 
     /**
-     * @param url
-     * @param queryPairs
-     * @param headers
-     * @param parts
-     * @return
+     * @param url        an instance of {@link String}
+     * @param queryPairs {@link Map}, defer to {@link QueryMap}
+     * @param headers    {@link Map}, defer to {@link HeaderMap}
+     * @param parts      an array instance of {@link MultipartBody.Part}, defer to {@link Part}
+     * @return an instance of {@link Flowable}
      */
     @Multipart
     @POST
     Flowable<ResponseBody> postPartsWithEntirety(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs, @HeaderMap Map<String, String> headers, @Part MultipartBody.Part[] parts);
 
     /**
-     * @param url
-     * @param parts
-     * @return
+     * @param url   an instance of {@link String}
+     * @param parts a {@link List} instance of {@link MultipartBody.Part}, defer to {@link Part}
+     * @return an instance of {@link Flowable}
      */
     @Multipart
     @POST
     Flowable<ResponseBody> postParts(@Url String url, @Part List<MultipartBody.Part> parts);
 
     /**
-     * @param url
-     * @param headers
-     * @param parts
-     * @return
+     * @param url     an instance of {@link String}
+     * @param headers {@link Map}, defer to {@link HeaderMap}
+     * @param parts   a {@link List}  instance of {@link MultipartBody.Part}, defer to {@link Part}
+     * @return an instance of {@link Flowable}
      */
     @Multipart
     @POST
     Flowable<ResponseBody> postPartsWithHeaders(@Url String url, @HeaderMap Map<String, String> headers, @Part List<MultipartBody.Part> parts);
 
     /**
-     * @param url
-     * @param queryPairs
-     * @param parts
-     * @return
+     * @param url        an instance of {@link String}
+     * @param queryPairs {@link Map}, defer to {@link QueryMap}
+     * @param parts      a {@link List}  instance of {@link MultipartBody.Part}, defer to {@link Part}
+     * @return an instance of {@link Flowable}
      */
     @Multipart
     @POST
     Flowable<ResponseBody> postPartsWithParameters(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs, @Part List<MultipartBody.Part> parts);
 
     /**
-     * @param url
-     * @param queryPairs
-     * @param headers
-     * @param parts
-     * @return
+     * @param url        an instance of {@link String}
+     * @param queryPairs {@link Map}, defer to {@link QueryMap}
+     * @param headers    {@link Map}, defer to {@link HeaderMap}
+     * @param parts      a {@link List}  instance of {@link MultipartBody.Part}, defer to {@link Part}
+     * @return an instance of {@link Flowable}
      */
     @Multipart
     @POST
     Flowable<ResponseBody> postPartsWithEntirety(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs, @HeaderMap Map<String, String> headers, @Part List<MultipartBody.Part> parts);
 
     /**
-     * @param url
-     * @param parts
-     * @return
+     * @param url   an instance of {@link String}
+     * @param parts {@link String}/{@link RequestBody} pairs, defer to {@link PartMap}
+     * @return an instance of {@link Flowable}
      */
     @Multipart
     @POST
     Flowable<ResponseBody> postParts(@Url String url, @PartMap Map<String, RequestBody> parts);
 
     /**
-     * @param url
-     * @param headers
-     * @param parts
-     * @return
+     * @param url     an instance of {@link String}
+     * @param headers {@link Map}, defer to {@link HeaderMap}
+     * @param parts   {@link String}/{@link RequestBody} pairs, defer to {@link PartMap}
+     * @return an instance of {@link Flowable}
      */
     @Multipart
     @POST
     Flowable<ResponseBody> postPartsWithHeaders(@Url String url, @HeaderMap Map<String, String> headers, @PartMap Map<String, RequestBody> parts);
 
     /**
-     * @param url
-     * @param queryPairs
-     * @param parts
-     * @return
+     * @param url        an instance of {@link String}
+     * @param queryPairs {@link Map}, defer to {@link QueryMap}
+     * @param parts      {@link String}/{@link RequestBody} pairs, defer to {@link PartMap}
+     * @return an instance of {@link Flowable}
      */
     @Multipart
     @POST
     Flowable<ResponseBody> postPartsWithParameters(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs, @PartMap Map<String, RequestBody> parts);
 
     /**
-     * @param url
-     * @param headers
-     * @param queryPairs
-     * @param parts
-     * @return
+     * @param url        an instance of {@link String}
+     * @param headers    {@link Map}, defer to {@link HeaderMap}
+     * @param queryPairs {@link Map}, defer to {@link QueryMap}
+     * @param parts      {@link String}/{@link RequestBody} pairs, defer to {@link PartMap}
+     * @return an instance of {@link Flowable}
      */
     @Multipart
     @POST
     Flowable<ResponseBody> postPartsWithEntirety(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs, @HeaderMap Map<String, String> headers, @PartMap Map<String, RequestBody> parts);
 
     /**
-     * @param url
-     * @param body
-     * @return
+     * @param url  an instance of {@link String}
+     * @param body an instance of {@link RequestBody}, defer to {@link Body}
+     * @return an instance of {@link Flowable}
      */
     @POST
     Flowable<ResponseBody> postBody(@Url String url, @Body RequestBody body);
 
     /**
-     * @param url
-     * @param headers
-     * @param body
-     * @return
+     * @param url     an instance of {@link String}
+     * @param headers {@link Map}, defer to {@link HeaderMap}
+     * @param body    an instance of {@link RequestBody}, defer to {@link Body}
+     * @return an instance of {@link Flowable}
      */
     @POST
     Flowable<ResponseBody> postBodyWithHeaders(@Url String url, @HeaderMap Map<String, String> headers, @Body RequestBody body);
 
     /**
-     * @param url
-     * @param queryPairs
-     * @param body
-     * @return
+     * @param url        an instance of {@link String}
+     * @param queryPairs {@link Map}, defer to {@link QueryMap}
+     * @param body       an instance of {@link RequestBody}, defer to {@link Body}
+     * @return an instance of {@link Flowable}
      */
     @POST
     Flowable<ResponseBody> postBodyWithParameters(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs, @Body RequestBody body);
 
     /**
-     * @param url
-     * @param headers
-     * @param queryPairs
-     * @param body
-     * @return
+     * @param url        an instance of {@link String}
+     * @param headers    {@link Map}, defer to {@link HeaderMap}
+     * @param queryPairs {@link Map}, defer to {@link QueryMap}
+     * @param body       an instance of {@link RequestBody}, defer to {@link Body}
+     * @return an instance of {@link Flowable}
      */
     @POST
     Flowable<ResponseBody> postBodyWithEntirety(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs, @HeaderMap Map<String, String> headers, @Body RequestBody body);
