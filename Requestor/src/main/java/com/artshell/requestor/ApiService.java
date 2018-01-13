@@ -33,6 +33,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.PartMap;
 import retrofit2.http.QueryMap;
+import retrofit2.http.QueryName;
 import retrofit2.http.Url;
 
 /**
@@ -72,6 +73,40 @@ public interface ApiService {
      */
     @GET
     Flowable<ResponseBody> getWithEntirety(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs, @HeaderMap Map<String, String> headers);
+
+    /**
+     * @param url        an instance of {@link String}
+     * @param queryNames eg. String[] queryNames = {"price=12", "count=56"};
+     * @return an instance of {@link Flowable}
+     */
+    @GET
+    Flowable<ResponseBody> getWithQueryNames(@Url String url, @QueryName(encoded = true) String[] queryNames);
+
+    /**
+     * @param url        an instance of {@link String}
+     * @param queryNames eg. String[] queryNames = {"price=12", "count=56"}
+     * @param headers    {@link Map}, defer to {@link HeaderMap}
+     * @return an instance of {@link Flowable}
+     */
+    @GET
+    Flowable<ResponseBody> getWithEntirety(@Url String url, @QueryName(encoded = true) String[] queryNames, @HeaderMap Map<String, String> headers);
+
+    /**
+     * @param url        an instance of {@link String}
+     * @param queryNames eg. List<String> queryNames = new ArrayList<>(); queryNames.add("price=12")
+     * @return an instance of {@link Flowable}
+     */
+    @GET
+    Flowable<ResponseBody> getWithQueryNames(@Url String url, @QueryName(encoded = true) List<String> queryNames);
+
+    /**
+     * @param url        an instance of {@link String}
+     * @param queryNames eg. List<String> queryNames = new ArrayList<>(); queryNames.add("price=12")
+     * @param headers    {@link Map}, defer to {@link HeaderMap}
+     * @return an instance of {@link Flowable}
+     */
+    @GET
+    Flowable<ResponseBody> getWithEntirety(@Url String url, @QueryName(encoded = true) List<String> queryNames, @HeaderMap Map<String, String> headers);
 
     /**
      * @param url an instance of {@link String}

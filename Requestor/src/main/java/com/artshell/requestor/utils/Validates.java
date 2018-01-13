@@ -24,6 +24,21 @@ import java.util.Map;
  */
 
 public class Validates {
+
+    public static void check(Class<?> clazz, String[] queryNames) {
+        ClassExclude.exclude(clazz);
+        Objects.requireNonNull(queryNames, "queryNames == null");
+        Numbers.requireNonzero(queryNames.length, "queryNames.length == 0");
+    }
+
+    public static void check(Class<?> clazz, String[] queryNames, Map<?, ?> map) {
+        ClassExclude.exclude(clazz);
+        Objects.requireNonNull(queryNames, "queryNames == null");
+        Objects.requireNonNull(map, "map == null");
+        Numbers.requireNonzero(queryNames.length, "queryNames.length == 0");
+        Numbers.requireNonzero(map.size(), "map.size() == 0");
+    }
+
     public static void check(Class<?> clazz, Map<?, ?> map) {
         ClassExclude.exclude(clazz);
         Objects.requireNonNull(map, "map == null");
@@ -52,6 +67,14 @@ public class Validates {
         ClassExclude.exclude(clazz);
         Objects.requireNonNull(collect, "collect == null");
         Numbers.requireNonzero(collect.size(), "collect.size() == 0");
+    }
+
+    public static void check(Class<?> clazz, Collection<?> collect, Map<?, ?> map) {
+        ClassExclude.exclude(clazz);
+        Objects.requireNonNull(collect, "collect == null");
+        Objects.requireNonNull(map, "map == null");
+        Numbers.requireNonzero(collect.size(), "collect.size() == 0");
+        Numbers.requireNonzero(map.size(), "map.size() == 0");
     }
 
     public static void check(Class<?> clazz, Map<?, ?> map, Collection<?> collect) {

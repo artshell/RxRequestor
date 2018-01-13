@@ -14,6 +14,7 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:${versions.rxjava}"
     implementation "com.annimon:stream:${versions.stream}"
     implementation "com.google.code.gson:gson:${versions.gson}"
+    implementation "org.simpleframework:simple-xml:${versions.simple_xml}"
     errorprone "com.google.errorprone:error_prone_core:${versions.errorprone}"
     compileOnly "com.google.errorprone:error_prone_annotations:${versions.errorprone}"
     compileOnly "com.uber.javaxextras:javax-extras:${versions.uber_javax_extras}"

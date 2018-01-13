@@ -26,14 +26,14 @@ import okhttp3.ResponseBody;
  * @author artshell on 02/12/2017
  */
 
-public class MapperProvider {
-    private ResultConverter mConverter;
+final class MapperProvider {
+    private Converter mConverter;
 
-    public MapperProvider(ResultConverter converter) {
+    public MapperProvider(Converter converter) {
         mConverter = converter;
     }
 
-    public ResultConverter getConverter() {
+    public Converter getConverter() {
         return mConverter;
     }
 
@@ -42,10 +42,10 @@ public class MapperProvider {
     }
 
     private static class ResponseBodyFunction<T> implements Function<ResponseBody, T> {
-        private ResultConverter mConverter;
+        private Converter mConverter;
         private Class<T> clazz;
 
-        ResponseBodyFunction(ResultConverter converter, Class<T> target) {
+        ResponseBodyFunction(Converter converter, Class<T> target) {
             mConverter = converter;
             this.clazz = target;
         }

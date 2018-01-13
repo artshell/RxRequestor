@@ -26,13 +26,17 @@ import okhttp3.ResponseBody;
  * @author artshell on 02/12/2017
  */
 
-public class DefaultConverter implements ResultConverter {
+public final class JsonConverter implements Converter {
     private Gson gson = new Gson();
+
+    public static JsonConverter create() {
+        return new JsonConverter();
+    }
 
     @Override
     public <T> T apply(Class<T> target, ResponseBody body) throws IOException {
         try {
-            return gson.fromJson(body.string(), target);
+            return gson.fromJson(body.charStream(), target);
         } finally {
             body.close();
         }

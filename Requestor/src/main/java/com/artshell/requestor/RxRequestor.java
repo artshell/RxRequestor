@@ -44,11 +44,13 @@ import retrofit2.http.QueryMap;
 public class RxRequestor {
     private Retrofit mRetrofit;
     private ApiService mDelegate;
+    private Protocol mType;
     private MapperProvider mProvider;
 
-    private RxRequestor(Retrofit retrofit, ApiService delegate, MapperProvider provider) {
+    private RxRequestor(Retrofit retrofit, ApiService delegate, Protocol type, MapperProvider provider) {
         mRetrofit = retrofit;
         mDelegate = delegate;
+        mType = type;
         mProvider = provider;
     }
 
@@ -102,6 +104,56 @@ public class RxRequestor {
     public <T> Flowable<T> getWithEntirety(Class<T> target, String url, Map<String, String> queryPairs, Map<String, String> headers) {
         Validates.check(target, queryPairs, headers);
         return mDelegate.getWithEntirety(url, queryPairs, headers).map(mProvider.converterFor(target));
+    }
+
+    /**
+     * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
+     * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
+     * @param queryNames key/value pairs of {@link String} array
+     * @param <T>        a class
+     * @return an instance of {@link Flowable}
+     */
+    public <T> Flowable<T> getWithQueryNames(Class<T> target, String url, String[] queryNames) {
+        Validates.check(target, queryNames);
+        return mDelegate.getWithQueryNames(url, queryNames).map(mProvider.converterFor(target));
+    }
+
+    /**
+     * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
+     * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
+     * @param queryNames key/value pairs of {@link String} of array
+     * @param headers    refer to {@link HeaderMap}
+     * @param <T>        a class
+     * @return an instance of {@link Flowable}
+     */
+    public <T> Flowable<T> getWithEntirety(Class<T> target, String url, String[] queryNames, Map<String, String> headers) {
+        Validates.check(target, queryNames, headers);
+        return mDelegate.getWithEntirety(url, queryNames, headers).map(mProvider.converterFor(target));
+    }
+
+    /**
+     * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
+     * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
+     * @param queryNames key/value pairs of {@link String} of Array
+     * @param <T>        a class
+     * @return an instance of {@link Flowable}
+     */
+    public <T> Flowable<T> getWithQueryNames(Class<T> target, String url, List<String> queryNames) {
+        Validates.check(target, queryNames);
+        return mDelegate.getWithQueryNames(url, queryNames).map(mProvider.converterFor(target));
+    }
+
+    /**
+     * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
+     * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
+     * @param queryNames key/value pairs of {@link String} of {@link List}
+     * @param headers    refer to {@link HeaderMap}
+     * @param <T>        a class
+     * @return an instance of {@link Flowable}
+     */
+    public <T> Flowable<T> getWithEntirety(Class<T> target, String url, List<String> queryNames, Map<String, String> headers) {
+        Validates.check(target, queryNames, headers);
+        return mDelegate.getWithEntirety(url, queryNames, headers).map(mProvider.converterFor(target));
     }
 
     /**
@@ -485,15 +537,16 @@ public class RxRequestor {
     public static class Builder {
         private Retrofit mRetrofit;
         private ApiService mDelegate;
+        private Protocol mType;
+        private Converter mConverter;
         private MapperProvider mProvider;
-        private ResultConverter mConverter;
 
-        public Builder() {
-        }
+        public Builder() {}
 
         Builder(RxRequestor requestor) {
             this.mRetrofit = requestor.mRetrofit;
             this.mDelegate = requestor.mDelegate;
+            this.mType = requestor.mType;
             this.mProvider = requestor.mProvider;
             this.mConverter = mProvider.getConverter();
         }
@@ -518,21 +571,33 @@ public class RxRequestor {
         }
 
         /**
-         * @param converter optional, refer to {@link DefaultConverter} if custom yourself ResultConverter
+         * @param type type of data, defer to {@link Protocol}
+         * @return
+         */
+        public Builder supportBy(Protocol type) {
+            Objects.requireNonNull(type, "type == null");
+            mType = type;
+            return this;
+        }
+
+        /**
+         * Optional configuration
+         * @param converter refer to {@link JsonConverter} or {@link XmlConverter} if custom yourself Converter
          * @return an instance of {@link Builder}
          */
-        public Builder useSelfConverter(ResultConverter converter) {
+        public Builder customConverter(Converter converter) {
             Objects.requireNonNull(converter, "converter == null");
             mConverter = converter;
             return this;
         }
 
         public RxRequestor build() {
-            Objects.requireNonNull(mRetrofit, "retrofit == null, You must provider a retrofit by setRetrofit()");
+            Objects.requireNonNull(mRetrofit, "mRetrofit == null, You must provider an instance of Retrofit by setRetrofit()");
+            Objects.requireNonNull(mType, "mType == null, You must provider an instance of Protocol by supportBy()");
             mDelegate = mRetrofit.create(ApiService.class);
-            mConverter = mConverter == null ? new DefaultConverter() : mConverter;
+            mConverter = mConverter != null ? mConverter : mType == Protocol.JSON ? JsonConverter.create() : XmlConverter.createNonStrict();
             mProvider = new MapperProvider(mConverter);
-            return new RxRequestor(mRetrofit, mDelegate, mProvider);
+            return new RxRequestor(mRetrofit, mDelegate, mType, mProvider);
         }
     }
 }

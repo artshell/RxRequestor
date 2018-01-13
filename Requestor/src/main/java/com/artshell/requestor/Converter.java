@@ -24,7 +24,7 @@ import okhttp3.ResponseBody;
  * @author artshell on 02/12/2017
  */
 
-public interface ResultConverter {
+public interface Converter {
     /**
      * @param target    custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
      *                  {@link java.io.InputStream}, {@link String}
