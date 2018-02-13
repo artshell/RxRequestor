@@ -26,9 +26,5 @@ public class ClassExclude {
         if (clz == byte.class || clz == Byte.class || clz == byte[].class) {
             throw new IllegalStateException("You should use Byte[].class as parameterize type, eg: Flowable<Byte[]>> post(Byte[].class ...)");
         }
-
-        if (clz == void.class || clz == Void.TYPE) {
-            throw new IllegalStateException("The Void class cannot be instantiated");
-        }
     }
 }

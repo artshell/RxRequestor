@@ -16,9 +16,12 @@
 
 package com.artshell.requestor;
 
+import org.reactivestreams.Publisher;
+
 import java.io.InputStream;
 import java.io.Reader;
 
+import io.reactivex.Flowable;
 import io.reactivex.functions.Function;
 import okhttp3.ResponseBody;
 
@@ -37,39 +40,41 @@ final class MapperProvider {
         return mConverter;
     }
 
-    public <T> Function<ResponseBody, T> converterFor(Class<T> target) {
+    public <T> Function<ResponseBody, Publisher<? extends T>> converterFor(Class<T> target) {
         return new ResponseBodyFunction<>(mConverter, target);
     }
 
-    private static class ResponseBodyFunction<T> implements Function<ResponseBody, T> {
+    private static class ResponseBodyFunction<T> implements Function<ResponseBody, Publisher<? extends T>> {
         private Converter mConverter;
         private Class<T> clazz;
 
         ResponseBodyFunction(Converter converter, Class<T> target) {
-            mConverter = converter;
+            this.mConverter = converter;
             this.clazz = target;
         }
 
         @SuppressWarnings("unchecked")
         @Override
-        public T apply(ResponseBody body) throws Exception {
+        public Publisher<? extends T> apply(ResponseBody body) throws Exception {
             if (clazz == ResponseBody.class) {
-                return (T) body;
+                return Flowable.just((T) body);
             } else if (clazz == Byte[].class) {
                 byte[] bts = body.bytes();
                 Byte[] copy = new Byte[bts.length];
                 for (int i = 0; i < bts.length; i++) {
                     copy[i] = bts[i];
                 }
-                return (T) copy;
+                return Flowable.just((T) copy);
             } else if (clazz == Reader.class) {
-                return (T) body.charStream();
+                return Flowable.just((T) body.charStream());
             } else if (clazz == InputStream.class) {
-                return (T) body.byteStream();
+                return Flowable.just((T) body.byteStream());
             } else if (clazz == String.class) {
-                return (T) body.string();
+                return Flowable.just((T) body.string());
+            } else if (clazz == void.class || clazz == Void.TYPE) {
+                return Flowable.empty();
             } else {
-                return mConverter.apply(clazz, body);
+                return Flowable.just(mConverter.apply(clazz, body));
             }
         }
     }

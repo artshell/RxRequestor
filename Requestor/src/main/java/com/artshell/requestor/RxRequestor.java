@@ -63,7 +63,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> get(Class<T> target, String url) {
         ClassExclude.exclude(target);
-        return mDelegate.get(url).map(mProvider.converterFor(target));
+        return mDelegate.get(url).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -76,7 +76,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> getWithHeaders(Class<T> target, String url, Map<String, String> headers) {
         Validates.check(target, headers);
-        return mDelegate.getWithHeaders(url, headers).map(mProvider.converterFor(target));
+        return mDelegate.getWithHeaders(url, headers).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -89,7 +89,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> getWithParameters(Class<T> target, String url, Map<String, String> queryPairs) {
         Validates.check(target, queryPairs);
-        return mDelegate.getWithParameters(url, queryPairs).map(mProvider.converterFor(target));
+        return mDelegate.getWithParameters(url, queryPairs).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -103,7 +103,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> getWithEntirety(Class<T> target, String url, Map<String, String> queryPairs, Map<String, String> headers) {
         Validates.check(target, queryPairs, headers);
-        return mDelegate.getWithEntirety(url, queryPairs, headers).map(mProvider.converterFor(target));
+        return mDelegate.getWithEntirety(url, queryPairs, headers).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -115,7 +115,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> getWithQueryNames(Class<T> target, String url, String[] queryNames) {
         Validates.check(target, queryNames);
-        return mDelegate.getWithQueryNames(url, queryNames).map(mProvider.converterFor(target));
+        return mDelegate.getWithQueryNames(url, queryNames).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -128,7 +128,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> getWithEntirety(Class<T> target, String url, String[] queryNames, Map<String, String> headers) {
         Validates.check(target, queryNames, headers);
-        return mDelegate.getWithEntirety(url, queryNames, headers).map(mProvider.converterFor(target));
+        return mDelegate.getWithEntirety(url, queryNames, headers).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -140,7 +140,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> getWithQueryNames(Class<T> target, String url, List<String> queryNames) {
         Validates.check(target, queryNames);
-        return mDelegate.getWithQueryNames(url, queryNames).map(mProvider.converterFor(target));
+        return mDelegate.getWithQueryNames(url, queryNames).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -153,7 +153,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> getWithEntirety(Class<T> target, String url, List<String> queryNames, Map<String, String> headers) {
         Validates.check(target, queryNames, headers);
-        return mDelegate.getWithEntirety(url, queryNames, headers).map(mProvider.converterFor(target));
+        return mDelegate.getWithEntirety(url, queryNames, headers).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -165,7 +165,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> post(Class<T> target, String url) {
         ClassExclude.exclude(target);
-        return mDelegate.post(url).map(mProvider.converterFor(target));
+        return mDelegate.post(url).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -178,7 +178,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> postWithHeaders(Class<T> target, String url, Map<String, String> headers) {
         Validates.check(target, headers);
-        return mDelegate.postWithHeaders(url, headers).map(mProvider.converterFor(target));
+        return mDelegate.postWithHeaders(url, headers).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -191,7 +191,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> postWithParameters(Class<T> target, String url, Map<String, String> queryPairs) {
         Validates.check(target, queryPairs);
-        return mDelegate.postWithParameters(url, queryPairs).map(mProvider.converterFor(target));
+        return mDelegate.postWithParameters(url, queryPairs).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -204,7 +204,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> postFields(Class<T> target, String url, Map<String, String> fields) {
         Validates.check(target, fields);
-        return mDelegate.postFields(url, fields).map(mProvider.converterFor(target));
+        return mDelegate.postFields(url, fields).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -218,7 +218,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> postWithHeaders(Class<T> target, String url, Map<String, String> headers, Map<String, String> fields) {
         Validates.check(target, headers, fields);
-        return mDelegate.postWithHeaders(url, headers, fields).map(mProvider.converterFor(target));
+        return mDelegate.postWithHeaders(url, headers, fields).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -232,7 +232,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> postWithParameters(Class<T> target, String url, Map<String, String> queryPairs, Map<String, String> fields) {
         Validates.check(target, queryPairs, fields);
-        return mDelegate.postWithParameters(url, queryPairs, fields).map(mProvider.converterFor(target));
+        return mDelegate.postWithParameters(url, queryPairs, fields).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -247,7 +247,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> postWithEntirety(Class<T> target, String url, Map<String, String> queryPairs, Map<String, String> headers, Map<String, String> fields) {
         Validates.check(target, queryPairs, headers, fields);
-        return mDelegate.postWithEntirety(url, queryPairs, headers, fields).map(mProvider.converterFor(target));
+        return mDelegate.postWithEntirety(url, queryPairs, headers, fields).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -260,7 +260,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> postPart(Class<T> target, String url, MultipartBody.Part part) {
         ClassExclude.exclude(target);
-        return mDelegate.postPart(url, part).map(mProvider.converterFor(target));
+        return mDelegate.postPart(url, part).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -274,7 +274,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> postPartWithHeaders(Class<T> target, String url, Map<String, String> headers, MultipartBody.Part part) {
         Validates.check(target, headers);
-        return mDelegate.postPartWithHeaders(url, headers, part).map(mProvider.converterFor(target));
+        return mDelegate.postPartWithHeaders(url, headers, part).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -288,7 +288,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> postPartWithParameters(Class<T> target, String url, Map<String, String> queryPairs, MultipartBody.Part part) {
         Validates.check(target, queryPairs);
-        return mDelegate.postPartWithParameters(url, queryPairs, part).map(mProvider.converterFor(target));
+        return mDelegate.postPartWithParameters(url, queryPairs, part).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -303,7 +303,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> postPartWithEntirety(Class<T> target, String url, Map<String, String> queryPairs, Map<String, String> headers, MultipartBody.Part part) {
         Validates.check(target, queryPairs, headers);
-        return mDelegate.postPartWithEntirety(url, queryPairs, headers, part).map(mProvider.converterFor(target));
+        return mDelegate.postPartWithEntirety(url, queryPairs, headers, part).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -316,7 +316,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> postParts(Class<T> target, String url, MultipartBody.Part[] parts) {
         Validates.check(target, parts);
-        return mDelegate.postParts(url, parts).map(mProvider.converterFor(target));
+        return mDelegate.postParts(url, parts).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -330,7 +330,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> postPartsWithHeaders(Class<T> target, String url, Map<String, String> headers, MultipartBody.Part[] parts) {
         Validates.check(target, headers, parts);
-        return mDelegate.postPartsWithHeaders(url, headers, parts).map(mProvider.converterFor(target));
+        return mDelegate.postPartsWithHeaders(url, headers, parts).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -344,7 +344,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> postPartsWithParameters(Class<T> target, String url, Map<String, String> queryPairs, MultipartBody.Part[] parts) {
         Validates.check(target, queryPairs, parts);
-        return mDelegate.postPartsWithParameters(url, queryPairs, parts).map(mProvider.converterFor(target));
+        return mDelegate.postPartsWithParameters(url, queryPairs, parts).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -359,7 +359,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> postPartsWithEntirety(Class<T> target, String url, Map<String, String> queryPairs, Map<String, String> headers, MultipartBody.Part[] parts) {
         Validates.check(target, queryPairs, headers, parts);
-        return mDelegate.postPartsWithEntirety(url, queryPairs, headers, parts).map(mProvider.converterFor(target));
+        return mDelegate.postPartsWithEntirety(url, queryPairs, headers, parts).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -372,7 +372,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> postParts(Class<T> target, String url, List<MultipartBody.Part> parts) {
         Validates.check(target, parts);
-        return mDelegate.postParts(url, parts).map(mProvider.converterFor(target));
+        return mDelegate.postParts(url, parts).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -386,7 +386,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> postPartsWithHeaders(Class<T> target, String url, Map<String, String> headers, List<MultipartBody.Part> parts) {
         Validates.check(target, headers, parts);
-        return mDelegate.postPartsWithHeaders(url, headers, parts).map(mProvider.converterFor(target));
+        return mDelegate.postPartsWithHeaders(url, headers, parts).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -400,7 +400,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> postPartsWithParameters(Class<T> target, String url, Map<String, String> queryPairs, List<MultipartBody.Part> parts) {
         Validates.check(target, queryPairs, parts);
-        return mDelegate.postPartsWithParameters(url, queryPairs, parts).map(mProvider.converterFor(target));
+        return mDelegate.postPartsWithParameters(url, queryPairs, parts).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -415,7 +415,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> postPartsWithEntirety(Class<T> target, String url, Map<String, String> queryPairs, Map<String, String> headers, List<MultipartBody.Part> parts) {
         Validates.check(target, queryPairs, headers, parts);
-        return mDelegate.postPartsWithEntirety(url, queryPairs, headers, parts).map(mProvider.converterFor(target));
+        return mDelegate.postPartsWithEntirety(url, queryPairs, headers, parts).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -428,7 +428,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> postParts(Class<T> target, String url, Map<String, RequestBody> parts) {
         Validates.check(target, parts);
-        return mDelegate.postParts(url, parts).map(mProvider.converterFor(target));
+        return mDelegate.postParts(url, parts).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -442,7 +442,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> postPartsWithHeaders(Class<T> target, String url, Map<String, String> headers, Map<String, RequestBody> parts) {
         Validates.check(target, headers, parts);
-        return mDelegate.postPartsWithHeaders(url, headers, parts).map(mProvider.converterFor(target));
+        return mDelegate.postPartsWithHeaders(url, headers, parts).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -456,7 +456,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> postPartsWithParameters(Class<T> target, String url, Map<String, String> queryPairs, Map<String, RequestBody> parts) {
         Validates.check(target, queryPairs, parts);
-        return mDelegate.postPartsWithParameters(url, queryPairs, parts).map(mProvider.converterFor(target));
+        return mDelegate.postPartsWithParameters(url, queryPairs, parts).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -471,7 +471,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> postPartsWithEntirety(Class<T> target, String url, Map<String, String> queryPairs, Map<String, String> headers, Map<String, RequestBody> parts) {
         Validates.check(target, queryPairs, headers, parts);
-        return mDelegate.postPartsWithEntirety(url, queryPairs, headers, parts).map(mProvider.converterFor(target));
+        return mDelegate.postPartsWithEntirety(url, queryPairs, headers, parts).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -484,7 +484,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> postBody(Class<T> target, String url, RequestBody body) {
         ClassExclude.exclude(target);
-        return mDelegate.postBody(url, body).map(mProvider.converterFor(target));
+        return mDelegate.postBody(url, body).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -498,7 +498,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> postBodyWithHeaders(Class<T> target, String url, Map<String, String> headers, RequestBody body) {
         Validates.check(target, headers);
-        return mDelegate.postBodyWithHeaders(url, headers, body).map(mProvider.converterFor(target));
+        return mDelegate.postBodyWithHeaders(url, headers, body).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -512,7 +512,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> postBodyWithParameters(Class<T> target, String url, Map<String, String> queryPairs, RequestBody body) {
         Validates.check(target, queryPairs);
-        return mDelegate.postBodyWithParameters(url, queryPairs, body).map(mProvider.converterFor(target));
+        return mDelegate.postBodyWithParameters(url, queryPairs, body).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -527,7 +527,7 @@ public class RxRequestor {
      */
     public <T> Flowable<T> postBodyWithEntirety(Class<T> target, String url, Map<String, String> queryPairs, Map<String, String> headers, RequestBody body) {
         Validates.check(target, queryPairs, headers);
-        return mDelegate.postBodyWithEntirety(url, queryPairs, headers, body).map(mProvider.converterFor(target));
+        return mDelegate.postBodyWithEntirety(url, queryPairs, headers, body).flatMap(mProvider.converterFor(target));
     }
 
     public Builder newBuilder() {
@@ -565,7 +565,7 @@ public class RxRequestor {
                         }
                     });
             Objects.requireNonNull(hasFactory ? "" : null, "You must add RxJava2CallAdapterFactory for retrofit by Retrofit.Builder#addCallAdapterFactory()");
-            Objects.requireNonNull(retrofit.baseUrl(), "You must add baseUrl for retrofit by Retrofit.Builder#baseUrl()");
+            Objects.requireNonNull(retrofit.baseUrl(), "You must add a base url for retrofit by Retrofit.Builder#baseUrl()");
             mRetrofit = retrofit;
             return this;
         }
