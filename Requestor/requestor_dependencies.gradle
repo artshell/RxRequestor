@@ -17,7 +17,7 @@ ext.versions = [
 ext.push = [
         groupId           : 'com.artshell',
         artifactId        : 'RxRequestor',
-        publishCode       : 102,
-        publishName       : '1.0.2',
+        publishCode       : 103,
+        publishName       : '1.0.3',
         url               : 'https://github.com/artshell/RxRequestor'
 ]

@@ -56,7 +56,7 @@ public class RxRequestor {
 
     /**
      * @param target custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *               {@link java.io.InputStream}, {@link String}
+     *               {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url    {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param <T>    a class
      * @return an instance of {@link Flowable}
@@ -68,7 +68,7 @@ public class RxRequestor {
 
     /**
      * @param target  custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                {@link java.io.InputStream}, {@link String}
+     *                {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url     {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param headers refer to {@link HeaderMap}
      * @param <T>     a class
@@ -81,7 +81,7 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}
+     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param <T>        a class
@@ -94,7 +94,7 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}
+     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param headers    refer to {@link HeaderMap}
@@ -109,7 +109,7 @@ public class RxRequestor {
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
      * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
-     * @param queryNames key/value pairs of {@link String} array
+     * @param queryNames key/value pairs of {@link String}, {@link Void} array
      * @param <T>        a class
      * @return an instance of {@link Flowable}
      */
@@ -121,7 +121,7 @@ public class RxRequestor {
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
      * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
-     * @param queryNames key/value pairs of {@link String} of array
+     * @param queryNames key/value pairs of {@link String}, {@link Void} of array
      * @param headers    refer to {@link HeaderMap}
      * @param <T>        a class
      * @return an instance of {@link Flowable}
@@ -134,7 +134,7 @@ public class RxRequestor {
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
      * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
-     * @param queryNames key/value pairs of {@link String} of Array
+     * @param queryNames key/value pairs of {@link String}, {@link Void} of Array
      * @param <T>        a class
      * @return an instance of {@link Flowable}
      */
@@ -146,7 +146,7 @@ public class RxRequestor {
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
      * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
-     * @param queryNames key/value pairs of {@link String} of {@link List}
+     * @param queryNames key/value pairs of {@link String}, {@link Void} of {@link List}
      * @param headers    refer to {@link HeaderMap}
      * @param <T>        a class
      * @return an instance of {@link Flowable}
@@ -158,7 +158,7 @@ public class RxRequestor {
 
     /**
      * @param target custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *               {@link java.io.InputStream}, {@link String}
+     *               {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url    {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param <T>    a class
      * @return an instance of {@link Flowable}
@@ -170,7 +170,7 @@ public class RxRequestor {
 
     /**
      * @param target  custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                {@link java.io.InputStream}, {@link String}
+     *                {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url     {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param headers refer to {@link HeaderMap}
      * @param <T>     a class
@@ -183,7 +183,7 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}
+     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param <T>        a class
@@ -196,7 +196,7 @@ public class RxRequestor {
 
     /**
      * @param target custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *               {@link java.io.InputStream}, {@link String}
+     *               {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url    {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param fields refer to {@link FieldMap}
      * @param <T>    a class
@@ -209,7 +209,7 @@ public class RxRequestor {
 
     /**
      * @param target  custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                {@link java.io.InputStream}, {@link String}
+     *                {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url     {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param headers refer to {@link HeaderMap}
      * @param fields  refer to {@link FieldMap}
@@ -223,7 +223,7 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}
+     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param fields     refer to {@link FieldMap}
@@ -237,7 +237,7 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}
+     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param headers    refer to {@link HeaderMap}
@@ -252,7 +252,7 @@ public class RxRequestor {
 
     /**
      * @param target custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *               {@link java.io.InputStream}, {@link String}
+     *               {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url    {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param part   refer to {@link MultipartBody.Part}
      * @param <T>    a class
@@ -265,7 +265,7 @@ public class RxRequestor {
 
     /**
      * @param target  custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                {@link java.io.InputStream}, {@link String}
+     *                {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url     {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param headers refer to {@link HeaderMap}
      * @param part    refer to {@link MultipartBody.Part}
@@ -279,7 +279,7 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}
+     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param part       refer to {@link MultipartBody.Part}
@@ -293,7 +293,7 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}
+     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param headers    refer to {@link HeaderMap}
@@ -308,7 +308,7 @@ public class RxRequestor {
 
     /**
      * @param target custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *               {@link java.io.InputStream}, {@link String}
+     *               {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url    {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param parts  refer to {@link MultipartBody.Part}
      * @param <T>    a class
@@ -321,7 +321,7 @@ public class RxRequestor {
 
     /**
      * @param target  custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                {@link java.io.InputStream}, {@link String}
+     *                {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url     {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param headers refer to {@link HeaderMap}
      * @param parts   refer to {@link MultipartBody.Part}
@@ -335,7 +335,7 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}
+     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param parts      refer to {@link MultipartBody.Part}
@@ -349,7 +349,7 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}
+     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param headers    refer to {@link HeaderMap}
@@ -364,7 +364,7 @@ public class RxRequestor {
 
     /**
      * @param target custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *               {@link java.io.InputStream}, {@link String}
+     *               {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url    {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param parts  refer to {@link MultipartBody.Part}
      * @param <T>    a class
@@ -377,7 +377,7 @@ public class RxRequestor {
 
     /**
      * @param target  custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                {@link java.io.InputStream}, {@link String}
+     *                {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url     {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param headers refer to {@link HeaderMap}
      * @param parts   refer to {@link MultipartBody.Part}
@@ -391,7 +391,7 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}
+     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param parts      refer to {@link MultipartBody.Part}
@@ -405,7 +405,7 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}
+     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param headers    refer to {@link HeaderMap}
@@ -420,7 +420,7 @@ public class RxRequestor {
 
     /**
      * @param target custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *               {@link java.io.InputStream}, {@link String}
+     *               {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url    {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param parts  refer to {@link MultipartBody.Part}
      * @param <T>    a class
@@ -433,7 +433,7 @@ public class RxRequestor {
 
     /**
      * @param target  custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                {@link java.io.InputStream}, {@link String}
+     *                {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url     {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param headers refer to {@link HeaderMap}
      * @param parts   refer to {@link MultipartBody.Part}
@@ -447,7 +447,7 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}
+     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param parts      refer to {@link MultipartBody.Part}
@@ -461,7 +461,7 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}
+     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param headers    refer to {@link HeaderMap}
@@ -476,7 +476,7 @@ public class RxRequestor {
 
     /**
      * @param target custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *               {@link java.io.InputStream}, {@link String}
+     *               {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url    {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param body   refer to {@link ResponseBody}
      * @param <T>    a class
@@ -489,7 +489,7 @@ public class RxRequestor {
 
     /**
      * @param target  custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                {@link java.io.InputStream}, {@link String}
+     *                {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url     {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param headers refer to {@link HeaderMap}
      * @param body    refer to {@link ResponseBody}
@@ -503,7 +503,7 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}
+     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param body       refer to {@link ResponseBody}
@@ -517,7 +517,7 @@ public class RxRequestor {
 
     /**
      * @param target     custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
-     *                   {@link java.io.InputStream}, {@link String}
+     *                   {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url        {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
      * @param queryPairs refer to {@link QueryMap}
      * @param headers    refer to {@link HeaderMap}
