@@ -1,5 +1,5 @@
 ### Introduction
-General http request encapsulate base on Retrofit, OkHttp and RxJava, support for [`java`](https://docs.oracle.com/javase/tutorial/index.html) and [`Android`](https://developer.android.com/index.html). Support result types：`coutom type`, [`ResponseBody`](http://square.github.io/okhttp/3.x/okhttp/okhttp3/RequestBody.html), [`Byte arrays`](https://docs.oracle.com/javase/8/docs/api/java/lang/Byte.html), [`Reader`](https://docs.oracle.com/javase/8/docs/api/java/io/Reader.html), [`InputStream`](https://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html), [`String`](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html), [`Void`](https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html)
+General http request encapsulate base on Retrofit, OkHttp and RxJava, support for [`java`](https://docs.oracle.com/javase/tutorial/index.html) and [`Android`](https://developer.android.com/index.html). Support result types：`coutom type`, [`ResponseBody`](http://square.github.io/okhttp/3.x/okhttp/okhttp3/RequestBody.html), [`Byte arrays`](https://docs.oracle.com/javase/8/docs/api/java/lang/Byte.html), [`Reader`](https://docs.oracle.com/javase/8/docs/api/java/io/Reader.html), [`InputStream`](https://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html), [`String`](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html), [`Void`](https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html). Data protocol includes `json` and `xml`
 
 ### Getting started
 ##### Simple Usage
@@ -41,9 +41,24 @@ public class Test {
                 .setRetrofit(retrofit)
                 .supportBy(Protocol.JSON)
                 .build();
-
-
-        // custom type (JSON entity), eg.
+                
+        
+        // Example A
+        // login whith user_id and password
+        Map<String, String> pairs = new HashMap<>();
+        pairs.put("user_id", "artshell");
+        pairs.put("password", "123456");
+        /*
+        * {
+        *   "code": "1000",
+        *   "msg" : "success",
+        *   "data" : "welcome artshell"
+        * }
+        */
+        Flowable<LoginEntity> loginSource = requestor.postFields(LoginEntity.class, "user/login", pairs);
+        
+        
+        // Example B
         /*
         * {
         *   "code": "1000",
@@ -51,7 +66,8 @@ public class Test {
         *   "data" : "hello world"
         * }
         */
-        Flowable<HelloWorld> helloSource = requestor.get(HelloWorld.class, "index/welcome");
+        // Custom type (JSON entity), eg.
+        Flowable<HelloWorld> helloSource = requestor.get(HelloEntity.class, "index/welcome");
 
         // ResponseBody
         Flowable<ResponseBody> bodySource = requestor.get(ResponseBody.class, "index/welcome");
