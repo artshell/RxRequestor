@@ -2,6 +2,11 @@
 General http request encapsulate base on Retrofit, OkHttp and RxJava, support for [`java`](https://docs.oracle.com/javase/tutorial/index.html) and [`Android`](https://developer.android.com/index.html). Support result types：`coutom type`, [`ResponseBody`](http://square.github.io/okhttp/3.x/okhttp/okhttp3/RequestBody.html), [`Byte arrays`](https://docs.oracle.com/javase/8/docs/api/java/lang/Byte.html), [`Reader`](https://docs.oracle.com/javase/8/docs/api/java/io/Reader.html), [`InputStream`](https://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html), [`String`](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html), [`Void`](https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html). Data protocol includes `json` and `xml`
 
 ### Getting started
+##### Add dependencies
+```java
+implementation 'com.artshell:RxRequestor:1.0.3'
+```
+
 ##### Simple Usage
 ```java
 import com.artshell.requestor.Protocol;
