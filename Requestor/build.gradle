@@ -12,7 +12,6 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:${versions.retrofit}"
     implementation "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}"
     implementation "io.reactivex.rxjava2:rxjava:${versions.rxjava}"
-    implementation "com.annimon:stream:${versions.stream}"
     implementation "com.google.code.gson:gson:${versions.gson}"
     implementation "org.simpleframework:simple-xml:${versions.simple_xml}"
     errorprone "com.google.errorprone:error_prone_core:${versions.errorprone}"
@@ -37,6 +36,6 @@ publish {
     groupId = push.groupId
     artifactId = push.artifactId
     publishVersion = push.publishName
-    description = 'General http request encapsulate base Retrofit, OkHttp and RxJava'
+    desc = 'General http request encapsulate base Retrofit, OkHttp and RxJava'
     website = push.url
 }

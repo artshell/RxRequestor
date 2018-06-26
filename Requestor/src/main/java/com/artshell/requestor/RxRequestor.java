@@ -16,8 +16,6 @@
 
 package com.artshell.requestor;
 
-import com.annimon.stream.Stream;
-import com.annimon.stream.function.Predicate;
 import com.artshell.requestor.utils.ClassExclude;
 import com.artshell.requestor.utils.Objects;
 import com.artshell.requestor.utils.Validates;
@@ -198,13 +196,13 @@ public class RxRequestor {
      * @param target custom type, {@link ResponseBody}, {@link Byte} arrays, {@link java.io.Reader}
      *               {@link java.io.InputStream}, {@link String}, {@link Void}
      * @param url    {@link retrofit2.http.Url}, {@link Retrofit.Builder#baseUrl(HttpUrl)}
-     * @param fields refer to {@link FieldMap}
+     * @param couples refer to {@link FieldMap}
      * @param <T>    a class
      * @return an instance of {@link Flowable}
      */
-    public <T> Flowable<T> postFields(Class<T> target, String url, Map<String, String> fields) {
-        Validates.check(target, fields);
-        return mDelegate.postFields(url, fields).flatMap(mProvider.converterFor(target));
+    public <T> Flowable<T> postCouples(Class<T> target, String url, Map<String, String> couples) {
+        Validates.check(target, couples);
+        return mDelegate.postCouples(url, couples).flatMap(mProvider.converterFor(target));
     }
 
     /**
@@ -557,13 +555,15 @@ public class RxRequestor {
          */
         public Builder setRetrofit(Retrofit retrofit) {
             Objects.requireNonNull(retrofit, "retrofit == null");
-            boolean hasFactory = Stream.of(retrofit.callAdapterFactories())
-                    .anyMatch(new Predicate<CallAdapter.Factory>() {
-                        @Override
-                        public boolean test(CallAdapter.Factory value) {
-                            return value instanceof RxJava2CallAdapterFactory || RxJava2CallAdapterFactory.class.isAssignableFrom(value.getClass());
-                        }
-                    });
+
+            boolean hasFactory = false;
+            List<CallAdapter.Factory> factories = retrofit.callAdapterFactories();
+            for (CallAdapter.Factory factory : factories) {
+                hasFactory = factory instanceof RxJava2CallAdapterFactory
+                        || RxJava2CallAdapterFactory.class.isAssignableFrom(factory.getClass());
+                if (hasFactory) break;
+            }
+
             Objects.requireNonNull(hasFactory ? "" : null, "You must add RxJava2CallAdapterFactory for retrofit by Retrofit.Builder#addCallAdapterFactory()");
             Objects.requireNonNull(retrofit.baseUrl(), "You must add a base url for retrofit by Retrofit.Builder#baseUrl()");
             mRetrofit = retrofit;

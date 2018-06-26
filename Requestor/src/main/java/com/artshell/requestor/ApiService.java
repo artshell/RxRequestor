@@ -133,12 +133,12 @@ public interface ApiService {
 
     /**
      * @param url    an instance of {@link String}
-     * @param fields {@link Map}, defer to {@link FieldMap}
+     * @param couples {@link Map}, defer to {@link FieldMap}
      * @return an instance of {@link Flowable}
      */
     @FormUrlEncoded
     @POST
-    Flowable<ResponseBody> postFields(@Url String url, @FieldMap(encoded = true) Map<String, String> fields);
+    Flowable<ResponseBody> postCouples(@Url String url, @FieldMap(encoded = true) Map<String, String> couples);
 
     /**
      * @param url     an instance of {@link String}
