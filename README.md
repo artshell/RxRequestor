@@ -4,7 +4,7 @@ General http request encapsulate base on Retrofit, OkHttp and RxJava, support fo
 ### Getting started
 ##### Add dependencies
 ```java
-implementation 'com.artshell:RxRequestor:1.0.3'
+implementation 'com.artshell:RxRequestor:1.0.4'
 ```
 
 ##### Simple Usage
