@@ -3,7 +3,7 @@ ext.versions = [
         okhttp          : '3.9.1',
         okio            : '1.13.0',
         retrofit        : '2.3.0',
-        rxjava          : '2.1.15',
+        rxjava          : '2.1.16',
         gson            : '2.8.2',
         simple_xml      : '2.7.1',
         errorprone      : '2.1.2',
@@ -16,7 +16,7 @@ ext.versions = [
 ext.push = [
         groupId           : 'com.artshell',
         artifactId        : 'RxRequestor',
-        publishCode       : 104,
-        publishName       : '1.0.4',
+        publishCode       : 105,
+        publishName       : '1.0.5',
         url               : 'https://github.com/artshell/RxRequestor'
 ]

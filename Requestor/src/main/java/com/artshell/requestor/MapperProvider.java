@@ -41,14 +41,14 @@ final class MapperProvider {
     }
 
     public <T> Function<ResponseBody, Publisher<? extends T>> converterFor(Class<T> target) {
-        return new ResponseBodyFunction<>(mConverter, target);
+        return new PublisherFunction<>(mConverter, target);
     }
 
-    private static class ResponseBodyFunction<T> implements Function<ResponseBody, Publisher<? extends T>> {
+    private static class PublisherFunction<T> implements Function<ResponseBody, Publisher<? extends T>> {
         private Converter mConverter;
         private Class<T> clazz;
 
-        ResponseBodyFunction(Converter converter, Class<T> target) {
+        PublisherFunction(Converter converter, Class<T> target) {
             this.mConverter = converter;
             this.clazz = target;
         }
@@ -56,6 +56,9 @@ final class MapperProvider {
         @SuppressWarnings("unchecked")
         @Override
         public Publisher<? extends T> apply(ResponseBody body) throws Exception {
+            // Fix for http status's code 204,205
+            if (body == null) return Flowable.empty();
+
             if (clazz == ResponseBody.class) {
                 return Flowable.just((T) body);
             } else if (clazz == Byte[].class) {
