@@ -55,7 +55,10 @@ public interface ApiService {
      * @return an instance of {@link Flowable}
      */
     @GET
-    Flowable<ResponseBody> getWithHeaders(@Url String url, @HeaderMap Map<String, String> headers);
+    Flowable<ResponseBody> getWithHeaders(
+            @Url String url,
+            @HeaderMap Map<String, String> headers
+    );
 
     /**
      * @param url        an instance of {@link String}
@@ -63,7 +66,10 @@ public interface ApiService {
      * @return an instance of {@link Flowable}
      */
     @GET
-    Flowable<ResponseBody> getWithParameters(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs);
+    Flowable<ResponseBody> getWithParameters(
+            @Url String url,
+            @QueryMap Map<String, String> queryPairs
+    );
 
     /**
      * @param url        an instance of {@link String}
@@ -72,7 +78,11 @@ public interface ApiService {
      * @return an instance of {@link Flowable}
      */
     @GET
-    Flowable<ResponseBody> getWithEntirety(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs, @HeaderMap Map<String, String> headers);
+    Flowable<ResponseBody> getWithEntirety(
+            @Url String url,
+            @QueryMap Map<String, String> queryPairs,
+            @HeaderMap Map<String, String> headers
+    );
 
     /**
      * @param url        an instance of {@link String}
@@ -80,7 +90,10 @@ public interface ApiService {
      * @return an instance of {@link Flowable}
      */
     @GET
-    Flowable<ResponseBody> getWithQueryNames(@Url String url, @QueryName(encoded = true) String[] queryNames);
+    Flowable<ResponseBody> getWithQueryNames(
+            @Url String url,
+            @QueryName String[] queryNames
+    );
 
     /**
      * @param url        an instance of {@link String}
@@ -89,7 +102,11 @@ public interface ApiService {
      * @return an instance of {@link Flowable}
      */
     @GET
-    Flowable<ResponseBody> getWithEntirety(@Url String url, @QueryName(encoded = true) String[] queryNames, @HeaderMap Map<String, String> headers);
+    Flowable<ResponseBody> getWithEntirety(
+            @Url String url,
+            @QueryName String[] queryNames,
+            @HeaderMap Map<String, String> headers
+    );
 
     /**
      * @param url        an instance of {@link String}
@@ -97,7 +114,10 @@ public interface ApiService {
      * @return an instance of {@link Flowable}
      */
     @GET
-    Flowable<ResponseBody> getWithQueryNames(@Url String url, @QueryName(encoded = true) List<String> queryNames);
+    Flowable<ResponseBody> getWithQueryNames(
+            @Url String url,
+            @QueryName List<String> queryNames
+    );
 
     /**
      * @param url        an instance of {@link String}
@@ -106,7 +126,11 @@ public interface ApiService {
      * @return an instance of {@link Flowable}
      */
     @GET
-    Flowable<ResponseBody> getWithEntirety(@Url String url, @QueryName(encoded = true) List<String> queryNames, @HeaderMap Map<String, String> headers);
+    Flowable<ResponseBody> getWithEntirety(
+            @Url String url,
+            @QueryName List<String> queryNames,
+            @HeaderMap Map<String, String> headers
+    );
 
     /**
      * @param url an instance of {@link String}
@@ -121,7 +145,10 @@ public interface ApiService {
      * @return an instance of {@link Flowable}
      */
     @POST
-    Flowable<ResponseBody> postWithHeaders(@Url String url, @HeaderMap Map<String, String> headers);
+    Flowable<ResponseBody> postWithHeaders(
+            @Url String url,
+            @HeaderMap Map<String, String> headers
+    );
 
     /**
      * @param url        an instance of {@link String}
@@ -129,16 +156,22 @@ public interface ApiService {
      * @return an instance of {@link Flowable}
      */
     @POST
-    Flowable<ResponseBody> postWithParameters(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs);
+    Flowable<ResponseBody> postWithParameters(
+            @Url String url,
+            @QueryMap Map<String, String> queryPairs
+    );
 
     /**
-     * @param url    an instance of {@link String}
+     * @param url     an instance of {@link String}
      * @param couples {@link Map}, defer to {@link FieldMap}
      * @return an instance of {@link Flowable}
      */
     @FormUrlEncoded
     @POST
-    Flowable<ResponseBody> postCouples(@Url String url, @FieldMap(encoded = true) Map<String, String> couples);
+    Flowable<ResponseBody> postCouples(
+            @Url String url,
+            @FieldMap Map<String, String> couples
+    );
 
     /**
      * @param url     an instance of {@link String}
@@ -148,7 +181,11 @@ public interface ApiService {
      */
     @FormUrlEncoded
     @POST
-    Flowable<ResponseBody> postWithHeaders(@Url String url, @HeaderMap Map<String, String> headers, @FieldMap(encoded = true) Map<String, String> fields);
+    Flowable<ResponseBody> postWithHeaders(
+            @Url String url,
+            @HeaderMap Map<String, String> headers,
+            @FieldMap Map<String, String> fields
+    );
 
     /**
      * @param url        an instance of {@link String}
@@ -158,7 +195,11 @@ public interface ApiService {
      */
     @FormUrlEncoded
     @POST
-    Flowable<ResponseBody> postWithParameters(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs, @FieldMap(encoded = true) Map<String, String> fields);
+    Flowable<ResponseBody> postWithParameters(
+            @Url String url,
+            @QueryMap Map<String, String> queryPairs,
+            @FieldMap Map<String, String> fields
+    );
 
     /**
      * @param url        an instance of {@link String}
@@ -169,7 +210,12 @@ public interface ApiService {
      */
     @FormUrlEncoded
     @POST
-    Flowable<ResponseBody> postWithEntirety(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs, @HeaderMap Map<String, String> headers, @FieldMap(encoded = true) Map<String, String> fields);
+    Flowable<ResponseBody> postWithEntirety(
+            @Url String url,
+            @QueryMap Map<String, String> queryPairs,
+            @HeaderMap Map<String, String> headers,
+            @FieldMap Map<String, String> fields
+    );
 
     /**
      * @param url  an instance of {@link String}
@@ -178,7 +224,10 @@ public interface ApiService {
      */
     @Multipart
     @POST
-    Flowable<ResponseBody> postPart(@Url String url, @Part MultipartBody.Part part);
+    Flowable<ResponseBody> postPart(
+            @Url String url,
+            @Part MultipartBody.Part part
+    );
 
     /**
      * @param url     an instance of {@link String}
@@ -188,7 +237,11 @@ public interface ApiService {
      */
     @Multipart
     @POST
-    Flowable<ResponseBody> postPartWithHeaders(@Url String url, @HeaderMap Map<String, String> headers, @Part MultipartBody.Part part);
+    Flowable<ResponseBody> postPartWithHeaders(
+            @Url String url,
+            @HeaderMap Map<String, String> headers,
+            @Part MultipartBody.Part part
+    );
 
     /**
      * @param url        an instance of {@link String}
@@ -198,7 +251,11 @@ public interface ApiService {
      */
     @Multipart
     @POST
-    Flowable<ResponseBody> postPartWithParameters(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs, @Part MultipartBody.Part part);
+    Flowable<ResponseBody> postPartWithParameters(
+            @Url String url,
+            @QueryMap Map<String, String> queryPairs,
+            @Part MultipartBody.Part part
+    );
 
     /**
      * @param url        an instance of {@link String}
@@ -209,7 +266,12 @@ public interface ApiService {
      */
     @Multipart
     @POST
-    Flowable<ResponseBody> postPartWithEntirety(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs, @HeaderMap Map<String, String> headers, @Part MultipartBody.Part part);
+    Flowable<ResponseBody> postPartWithEntirety(
+            @Url String url,
+            @QueryMap Map<String, String> queryPairs,
+            @HeaderMap Map<String, String> headers,
+            @Part MultipartBody.Part part
+    );
 
 
     /**
@@ -219,7 +281,10 @@ public interface ApiService {
      */
     @Multipart
     @POST
-    Flowable<ResponseBody> postParts(@Url String url, @Part MultipartBody.Part[] parts);
+    Flowable<ResponseBody> postParts(
+            @Url String url,
+            @Part MultipartBody.Part[] parts
+    );
 
     /**
      * @param url     an instance of {@link String}
@@ -229,7 +294,11 @@ public interface ApiService {
      */
     @Multipart
     @POST
-    Flowable<ResponseBody> postPartsWithHeaders(@Url String url, @HeaderMap Map<String, String> headers, @Part MultipartBody.Part[] parts);
+    Flowable<ResponseBody> postPartsWithHeaders(
+            @Url String url,
+            @HeaderMap Map<String, String> headers,
+            @Part MultipartBody.Part[] parts
+    );
 
     /**
      * @param url        an instance of {@link String}
@@ -239,7 +308,11 @@ public interface ApiService {
      */
     @Multipart
     @POST
-    Flowable<ResponseBody> postPartsWithParameters(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs, @Part MultipartBody.Part[] parts);
+    Flowable<ResponseBody> postPartsWithParameters(
+            @Url String url,
+            @QueryMap Map<String, String> queryPairs,
+            @Part MultipartBody.Part[] parts
+    );
 
     /**
      * @param url        an instance of {@link String}
@@ -250,7 +323,12 @@ public interface ApiService {
      */
     @Multipart
     @POST
-    Flowable<ResponseBody> postPartsWithEntirety(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs, @HeaderMap Map<String, String> headers, @Part MultipartBody.Part[] parts);
+    Flowable<ResponseBody> postPartsWithEntirety(
+            @Url String url,
+            @QueryMap Map<String, String> queryPairs,
+            @HeaderMap Map<String, String> headers,
+            @Part MultipartBody.Part[] parts
+    );
 
     /**
      * @param url   an instance of {@link String}
@@ -259,7 +337,10 @@ public interface ApiService {
      */
     @Multipart
     @POST
-    Flowable<ResponseBody> postParts(@Url String url, @Part List<MultipartBody.Part> parts);
+    Flowable<ResponseBody> postParts(
+            @Url String url,
+            @Part List<MultipartBody.Part> parts
+    );
 
     /**
      * @param url     an instance of {@link String}
@@ -269,7 +350,11 @@ public interface ApiService {
      */
     @Multipart
     @POST
-    Flowable<ResponseBody> postPartsWithHeaders(@Url String url, @HeaderMap Map<String, String> headers, @Part List<MultipartBody.Part> parts);
+    Flowable<ResponseBody> postPartsWithHeaders(
+            @Url String url,
+            @HeaderMap Map<String, String> headers,
+            @Part List<MultipartBody.Part> parts
+    );
 
     /**
      * @param url        an instance of {@link String}
@@ -279,7 +364,11 @@ public interface ApiService {
      */
     @Multipart
     @POST
-    Flowable<ResponseBody> postPartsWithParameters(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs, @Part List<MultipartBody.Part> parts);
+    Flowable<ResponseBody> postPartsWithParameters(
+            @Url String url,
+            @QueryMap Map<String, String> queryPairs,
+            @Part List<MultipartBody.Part> parts
+    );
 
     /**
      * @param url        an instance of {@link String}
@@ -290,7 +379,12 @@ public interface ApiService {
      */
     @Multipart
     @POST
-    Flowable<ResponseBody> postPartsWithEntirety(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs, @HeaderMap Map<String, String> headers, @Part List<MultipartBody.Part> parts);
+    Flowable<ResponseBody> postPartsWithEntirety(
+            @Url String url,
+            @QueryMap Map<String, String> queryPairs,
+            @HeaderMap Map<String, String> headers,
+            @Part List<MultipartBody.Part> parts
+    );
 
     /**
      * @param url   an instance of {@link String}
@@ -299,7 +393,10 @@ public interface ApiService {
      */
     @Multipart
     @POST
-    Flowable<ResponseBody> postParts(@Url String url, @PartMap Map<String, RequestBody> parts);
+    Flowable<ResponseBody> postParts(
+            @Url String url,
+            @PartMap Map<String, RequestBody> parts
+    );
 
     /**
      * @param url     an instance of {@link String}
@@ -309,7 +406,11 @@ public interface ApiService {
      */
     @Multipart
     @POST
-    Flowable<ResponseBody> postPartsWithHeaders(@Url String url, @HeaderMap Map<String, String> headers, @PartMap Map<String, RequestBody> parts);
+    Flowable<ResponseBody> postPartsWithHeaders(
+            @Url String url,
+            @HeaderMap Map<String, String> headers,
+            @PartMap Map<String, RequestBody> parts
+    );
 
     /**
      * @param url        an instance of {@link String}
@@ -319,7 +420,11 @@ public interface ApiService {
      */
     @Multipart
     @POST
-    Flowable<ResponseBody> postPartsWithParameters(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs, @PartMap Map<String, RequestBody> parts);
+    Flowable<ResponseBody> postPartsWithParameters(
+            @Url String url,
+            @QueryMap Map<String, String> queryPairs,
+            @PartMap Map<String, RequestBody> parts
+    );
 
     /**
      * @param url        an instance of {@link String}
@@ -330,7 +435,12 @@ public interface ApiService {
      */
     @Multipart
     @POST
-    Flowable<ResponseBody> postPartsWithEntirety(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs, @HeaderMap Map<String, String> headers, @PartMap Map<String, RequestBody> parts);
+    Flowable<ResponseBody> postPartsWithEntirety(
+            @Url String url,
+            @QueryMap Map<String, String> queryPairs,
+            @HeaderMap Map<String, String> headers,
+            @PartMap Map<String, RequestBody> parts
+    );
 
     /**
      * @param url  an instance of {@link String}
@@ -338,7 +448,10 @@ public interface ApiService {
      * @return an instance of {@link Flowable}
      */
     @POST
-    Flowable<ResponseBody> postBody(@Url String url, @Body RequestBody body);
+    Flowable<ResponseBody> postBody(
+            @Url String url,
+            @Body RequestBody body
+    );
 
     /**
      * @param url     an instance of {@link String}
@@ -347,7 +460,11 @@ public interface ApiService {
      * @return an instance of {@link Flowable}
      */
     @POST
-    Flowable<ResponseBody> postBodyWithHeaders(@Url String url, @HeaderMap Map<String, String> headers, @Body RequestBody body);
+    Flowable<ResponseBody> postBodyWithHeaders(
+            @Url String url,
+            @HeaderMap Map<String, String> headers,
+            @Body RequestBody body
+    );
 
     /**
      * @param url        an instance of {@link String}
@@ -356,7 +473,11 @@ public interface ApiService {
      * @return an instance of {@link Flowable}
      */
     @POST
-    Flowable<ResponseBody> postBodyWithParameters(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs, @Body RequestBody body);
+    Flowable<ResponseBody> postBodyWithParameters(
+            @Url String url,
+            @QueryMap Map<String, String> queryPairs,
+            @Body RequestBody body
+    );
 
     /**
      * @param url        an instance of {@link String}
@@ -366,5 +487,10 @@ public interface ApiService {
      * @return an instance of {@link Flowable}
      */
     @POST
-    Flowable<ResponseBody> postBodyWithEntirety(@Url String url, @QueryMap(encoded = true) Map<String, String> queryPairs, @HeaderMap Map<String, String> headers, @Body RequestBody body);
+    Flowable<ResponseBody> postBodyWithEntirety(
+            @Url String url,
+            @QueryMap Map<String, String> queryPairs,
+            @HeaderMap Map<String, String> headers,
+            @Body RequestBody body
+    );
 }
